@@ -28,6 +28,7 @@ func (fsp *OsFsProvider) Setup() {
 		}
 		root = sandbox
 	}
+
 	fsp.root = root
 
 	Expect(
