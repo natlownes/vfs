@@ -19,7 +19,7 @@ func (fsp *OsFsProvider) Setup() {
 	tmpdir, ok := os.LookupEnv("TEST_TMPDIR")
 	var root string
 	if ok {
-		root = os.Getenv("TEST_TMPDIR")
+		root = tmpdir
 	} else {
 		root = os.TempDir()
 	}
