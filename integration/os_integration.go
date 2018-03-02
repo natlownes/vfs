@@ -16,7 +16,13 @@ type OsFsProvider struct {
 }
 
 func (fsp *OsFsProvider) Setup() {
-	root := os.Getenv("TEST_TMPDIR")
+	tmpdir, ok := os.LookupEnv("TEST_TMPDIR")
+	var root string
+	if ok {
+		root = os.Getenv("TEST_TMPDIR")
+	} else {
+		root = os.TmpDir()
+	}
 	fsp.root = root
 
 	Expect(
