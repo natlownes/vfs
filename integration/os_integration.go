@@ -18,16 +18,15 @@ type OsFsProvider struct {
 
 func (fsp *OsFsProvider) Setup() {
 	tmpdir, ok := os.LookupEnv("TEST_TMPDIR")
-	var root string
 	if ok {
-		root = tmpdir
+		fsp.root = tmpdir
 	} else {
-		root, err := ioutil.TempDir(os.TempDir(), "vfs-tests")
+		root, err = ioutil.TempDir("", "vfs-tests")
 		if err != nil {
 			log.Fatal("failed to create tempdir")
 		}
+		fsp.root = root
 	}
-	fsp.root = root
 
 	Expect(
 		os.Mkdir(
