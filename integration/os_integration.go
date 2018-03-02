@@ -22,7 +22,7 @@ func (fsp *OsFsProvider) Setup() {
 	if ok {
 		root = tmpdir
 	} else {
-		root, err = ioutil.TempDir(os.TempDir(), "vfs-tests")
+		root, err := ioutil.TempDir(os.TempDir(), "vfs-tests")
 		if err != nil {
 			log.Fatal("failed to create tempdir")
 		}
