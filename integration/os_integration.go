@@ -3,6 +3,7 @@ package integration
 import (
 	"fmt"
 	"io/ioutil"
+	"log"
 	"os"
 	"path"
 
@@ -21,7 +22,10 @@ func (fsp *OsFsProvider) Setup() {
 	if ok {
 		root = tmpdir
 	} else {
-		root = os.TempDir()
+		root, err = ioutil.TempDir(os.TempDir(), "vfs-tests")
+		if err != nil {
+			log.Fatal("failed to create tempdir")
+		}
 	}
 	fsp.root = root
 
