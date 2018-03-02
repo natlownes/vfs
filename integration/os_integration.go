@@ -21,7 +21,7 @@ func (fsp *OsFsProvider) Setup() {
 	if ok {
 		root = os.Getenv("TEST_TMPDIR")
 	} else {
-		root = os.TmpDir()
+		root = os.TempDir()
 	}
 	fsp.root = root
 
